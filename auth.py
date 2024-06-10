@@ -36,7 +36,7 @@ async def login(user: LoginUser, Authenzetion: AuthJWT = Depends()):
 
     user_check = session.query(User).filter(User.username == user.username).first()
 
-    if check_password(user_check.password, user.password):
+    if check_password(user.password, user_check.password):
         access_token = Authenzetion.create_access_token(subject=user_check.username)
         refresh_token = Authenzetion.create_refresh_token(subject=user_check.username)
         data = {

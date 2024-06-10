@@ -10,6 +10,7 @@ from crud.payment import pay_router
 from db.schemas import JwtModel
 from fastapi_jwt_auth import AuthJWT
 
+
 app = FastAPI()
 app.include_router(a_router)
 app.include_router(city_router)

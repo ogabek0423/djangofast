@@ -4,9 +4,12 @@ from django.views.generic import TemplateView
 from django.views import View
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
+from django.contrib.auth.models import User
 from .forms import UserRegisterForm, UserLoginForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import City, Address, Lesson, Module, Course, PayType, Payment
+from werkzeug.security import check_password_hash
+from django.contrib.auth.hashers import check_password
 
 
 class AddressView(View):
@@ -27,21 +30,20 @@ class LoginPageView(View):
     def post(self, request):
         username = request.POST['username']
         password = request.POST['password']
-        data = {
-            "username": username,
-            "password": password
-        }
-        login_form = AuthenticationForm(data=data)
 
-        if login_form.is_valid():
-            user = login_form.get_user()
-            login(request, user)
-
-            return redirect("landing")
-        else:
-
+        try:
+            user = User.objects.get(username=username)
+            if check_password(password, user.password):
+                login(request, user)
+                return redirect("landing")
+            else:
+                context = {
+                    "error": "Invalid username or password"
+                }
+                return render(request, "login.html", context)
+        except User.DoesNotExist:
             context = {
-                "form": login_form,
+                "error": "Invalid username or password"
             }
             return render(request, "login.html", context)
 
