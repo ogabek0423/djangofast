@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-rxny=-cfrr^4n&3fi9v5(vt5-r2j@38)5&5=!!$m-i$m1u-=59
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 LOGIN_URL = '/login'
 
 # Application definition
@@ -66,11 +66,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": os.getenv("DB_ENGINE_SETTING"),
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": os.getenv("DBNAME"),
-        "USER": os.getenv("USER"),
-        "PASSWORD": os.getenv("PASSWORD"),
-        "HOST": os.getenv("HOST"),
+        "USER": "postgres",
+        "PASSWORD": "23042005.o",
+        "HOST": "127.0.0.1",
         "PORT": "5432",
     }
 }
@@ -78,6 +78,15 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
+]
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
