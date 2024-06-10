@@ -1,0 +1,43 @@
+"id": 6,
+"email": "afweidnvs@gmail.com",
+"address_id": 1,
+"first_name": "ogabek",
+"last_name": "obidov",
+"username": "user1",
+"password": "12345"
+
+
+lesson
+"id": 2,
+"title": "core lesson",
+"description": "intro",
+"homework": "homework"
+
+modules
+"id": 4,
+"name": "python core 1",
+"description": "intro python",
+"lesson_id":2
+
+course
+"id": 3,
+"name": "python1",
+"description": "intro python",
+"price": 100,
+"module_id":1
+
+class User(models.Model):
+    first_name = models.CharField(max_length=30, null=False)
+    last_name = models.CharField(max_length=30, null=False)
+    username = models.CharField(max_length=25, unique=True, null=False)
+    email = models.CharField(max_length=25, unique=True, null=False)
+    password = models.TextField(null=False)
+    is_active = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=False)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, related_name='users')
+
+    class Meta:
+        db_table = 'user'
+
+    def __str__(self):
+        return self.first_name

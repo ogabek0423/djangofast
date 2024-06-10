@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Addresses</title>
+</head>
+<body>
+    <div>
+        <br> <br> <br>
+        <h1 style="text-align: center">Cities</h1>
+        <div>
+
+            <div class="card" style="width: 18rem;">
+                {% for city in cities %}
+                <p>-------------------</p>
+                <div class="card-body">
+                    <h5 class="card-title">{{city.name}}</h5>
+                </div>
+                {%endfor%}
+            </div>
+
+        </div>
+        <br> <br> <br>
+        <h1 style="text-align: center">Addresses</h1>
+        <div>
+
+            <div class="card" style="width: 18rem;">
+                {% for address in addresses %}
+                <div class="card-body">
+                    <p>--------------------</p>
+                    <h5 class="card-title">{{address.name}}</h5>
+                    <h6>{{address.city.name}}</h6>
+                </div>
+                {%endfor%}
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

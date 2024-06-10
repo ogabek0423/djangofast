@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing page</title>
+</head>
+<body>
+    <div style="text-align: center">
+        <h2>Pages</h2>
+        {% if request.user.is_authenticated %}
+            <p>
+                <a href="{% url 'course' %}" >Course</a>
+                <a href="{% url 'payment' %}" >Payments</a>
+                <a href="{% url 'address' %}" >Address</a>
+                <a href="{% url 'logout' %}" >logout</a>
+            </p>
+        {%else%}
+             <p>
+                <a href="{% url 'course' %}" >Course</a>
+                <a href="{% url 'payment' %}" >Payments</a>
+                <a href="{% url 'address' %}" >Address</a>
+                <a href="{% url 'login' %}" >login</a>
+                <a href="{% url 'register' %}" >register</a>
+            </p>
+
+
+        {%endif%}
+    </div>
+</body>
+</html>

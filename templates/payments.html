@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payments</title>
+</head>
+<body>
+    <div>
+        <br> <br> <br>
+        <h1 style="text-align: center">Pay types</h1>
+        <div>
+            {% for pyt in pyts %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{pyt.type}}</h5>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <br> <br> <br>
+        <h1 style="text-align: center">Payments</h1>
+        <div>
+            {% for payment in payments %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5>To'lov</h5>
+                    <h5 class="card-title">user: {{payment.user.first_name}} {{payment.user.last_name}}</h5>
+                    <h6>summa: {{payment.amount}}</h6>
+                    <h6>course: {{payment.course.name}}</h6>
+                    <h6>type: {{payment.type.type}}</h6>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+</head>
+<body>
+    <div> <br> <br> <br>
+        <h1 style="text-align: center">Courses</h1>
+        <div>
+            {% for course in courses %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{course.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"> price {{course.price}} $</h6>
+                    <p class="card-text">{{course.description}}</p>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <br> <br> <br>
+        <h1 style="text-align: center">Modules</h1>
+        <div>
+            {% for module in modules %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{module.name}}</h5>
+                    <p class="card-text">{{module.description}}</p>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <br> <br> <br>
+        <h1 style="text-align: center">Lessons</h1>
+        <div>
+            {% for lesson in lessons %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{lesson.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Homeworks: {{lesson.homework}}</h6>
+                    <p class="card-text">{{lesson.description}}</p>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</body>
+</html>
